@@ -68,12 +68,6 @@ const Play = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (webSocket.current?.CLOSED) {
-        clearInterval(interval);
-
-        return;
-      }
-
       const accessToken = localStorage.getItem("accessToken");
 
       if (accessToken) {
