@@ -28,6 +28,19 @@ const Play = () => {
 
     webSocket.current.onopen = () => {
       console.log("Соединение установлено.");
+
+      const accessToken = localStorage.getItem("accessToken");
+
+      if (accessToken) {
+        webSocket.current?.send(
+          JSON.stringify({
+            event: "REQUEST_START_GAME",
+            data: {
+              accessToken,
+            },
+          })
+        );
+      }
     };
 
     return () => {
